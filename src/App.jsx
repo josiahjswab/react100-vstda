@@ -17,23 +17,25 @@ class App extends Component {
       <div id="wrapper">
         <h2>Very simple to do list.</h2>
         <h4>Project h3ll</h4>
-        <div id="toDoList">
+        <div id="addToList">
           <p>Add a new to do item:</p>
           <textarea rows="5" className="textArea" type="textarea"/>
           <div id='div-selector'>
             <p>How much of a priority is this?</p>
           <select id="selector" className="form-control">
-            <option value="priority">Critical</option>
-            <option value="priority">Important</option>
-            <option value="priority">Noncritical</option>
+            <option value="1">Critical</option>
+            <option value="2">Important</option>
+            <option value="3">Noncritical</option>
           </select>
           </div>
           <div id="div-button">
           <button type="button" className="btn btn-primary" onClick={this.clickHandler}>Add</button>
           </div>
         </div>
-        <div>
-          
+        <div id="list">
+          <p>To do list:</p>
+          <ul id="listItem">
+          </ul>
         </div>
       </div>
     );
