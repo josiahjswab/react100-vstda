@@ -1,28 +1,25 @@
-import React, { Component } from 'react';
-import ListItems from './ListItems';
-import AddListItem from './AddListItem';
-import './css/ToDoList.css'
+import React, { Component } from "react";
+import AddTodoItem from "./AddTodoItem";
+import TodoItem from "./TodoItem";
+
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      todo:[],
-    }
+
+    };
   }
 
   render() {
     return (
-      <div id="wrapper" className='container'>
-        <h2>Very simple to do list.</h2>
-        <div className="row">
-          <AddListItem entry={this.state.addItem}/>
-          <ListItems/>
+      <div id='container'>
+        <div className='row'>
+          <AddTodoItem/>
+          <TodoItem/>
         </div>
       </div>
     );
   }
 }
-
-
 export default App;
