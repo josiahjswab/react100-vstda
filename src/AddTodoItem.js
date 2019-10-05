@@ -26,8 +26,9 @@ class AddTodoItem extends React.Component{
       key: this.state.key++
     }
     console.log(listItem);
-    var stringListItem = listItem.item; //pulls item string from object listItem
-    this.setState({createListItem: stringListItem});
+    // var stringListItem = listItem.item; //pulls item string from object listItem
+    const {listItemCallBack} = this.props
+    listItemCallBack(listItem);
   }
 
 
@@ -65,7 +66,7 @@ class AddTodoItem extends React.Component{
               className='btn btn-primary' 
               onClick={this.clickHandler}
             >Add</button>
-            <li>{this.state.createListItem}</li>
+            {/* <li>{this.state.createListItem}</li> */}
           </div>
         </div>
       </div>
