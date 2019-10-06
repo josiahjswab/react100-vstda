@@ -27,8 +27,8 @@ class AddTodoItem extends React.Component{
     }
     console.log(listItem);
     // var stringListItem = listItem.item; //pulls item string from object listItem
-    const {listItemCallBack} = this.props
-    listItemCallBack(listItem);
+    const {callBack} = this.props
+    callBack(listItem);
   }
 
 
