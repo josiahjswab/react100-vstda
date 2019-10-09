@@ -1,26 +1,34 @@
 import React, { Component } from "react";
 import AddTodoItem from "./AddTodoItem";
 import TodoItem from "./TodoItem";
-
+import ListItem from './ListItem';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toDoItem: ''
+      toDoArray: []
     };
-    this.callBack = this.callBack.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
-callBack(itemObject){
-  console.log(itemObject + ' callBack Hit!');
-  this.setState({toDoItem: itemObject});
-}
+  addTodo(itemObject){
+    let toDoArray = this.state.toDoArray;
+    toDoArray.push(itemObject);
+    this.setState({toDoArray});
+    return toDoArray;
+  }
+
   render() {
+    
+    const listGenerator = this.state.toDoArray.map(item => <ListItem key={item.id} item={item}/>);
+
     return (
       <div id='container'>
         <div className='row'>
-          <AddTodoItem callBack={this.callBack}/>
-          <TodoItem toDoItem={this.state.toDoItem}/>
+          <AddTodoItem addTodo={this.addTodo}/>
+          <TodoItem 
+          listItem={listGenerator}
+          />
         </div>
       </div>
     );

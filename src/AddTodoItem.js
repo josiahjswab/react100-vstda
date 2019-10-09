@@ -7,28 +7,25 @@ class AddTodoItem extends React.Component{
     this.state= {
       item:'',
       priority:'1',
-      key: 1
-    }
+      key: 0
+    };
     this.changeHandler = this.changeHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
   }
 
   changeHandler(event) {
     this.setState({[event.target.name]: event.target.value});
-    console.log('changeHandler Hit!')
   }
 
   clickHandler() {
-    console.log('clickHandler Hit!')
-    var listItem = {
+    
+    this.setState({
       item: this.state.item,
       priority: this.state.priority,
-      key: this.state.key++
-    }
-    console.log(listItem);
-    // var stringListItem = listItem.item; //pulls item string from object listItem
-    const {callBack} = this.props
-    callBack(listItem);
+      key: Math.random() + 1
+    });
+    
+    this.props.addTodo(this.state);
   }
 
 
@@ -66,7 +63,6 @@ class AddTodoItem extends React.Component{
               className='btn btn-primary' 
               onClick={this.clickHandler}
             >Add</button>
-            {/* <li>{this.state.createListItem}</li> */}
           </div>
         </div>
       </div>
