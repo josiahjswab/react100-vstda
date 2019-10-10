@@ -1,5 +1,4 @@
 import React from 'react';
-import EditTodo from './EditTodo'
 
 class ListItem extends React.Component {
     constructor(props) {
@@ -13,20 +12,11 @@ class ListItem extends React.Component {
         this.changeEditHandler = this.changeEditHandler.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
         this.handleEditing = this.handleEditing.bind(this);
-        this.handleEditingDone = this.handleEditingDone.bind(this);
         this.handleEditingDoneButton = this.handleEditingDoneButton.bind(this);
-        console.log(this.state.checked);
     }
-
-
 
     changeHandler(event) {
         this.setState({[event.target.name]: event.target.value});
-      }
-
-    changeEditHandler(event) {
-        var changedText = event.target.value;
-        this.setState({changedItem: changedText});
     }
 
     clickHandler() {
@@ -35,16 +25,16 @@ class ListItem extends React.Component {
         }));        
     }
 
-    handleEditing (event) {
+    changeEditHandler(event) {
+        var changedText = event.target.value;
+        this.setState({changedItem: changedText});
+    }
+
+    handleEditing () {
         this.setState({editing: true, changedItem: this.props.item.item});
     }
 
-    handleEditingDone (event) {
-        if (event.keyCode === 13) {
-            this.setState({ editing: false });
-        }
-    }
-    handleEditingDoneButton (event) {
+    handleEditingDoneButton () {
         this.setState({ editing: false });
     }
 
@@ -71,7 +61,7 @@ class ListItem extends React.Component {
         };     
         return(
             <div className='list-item' value={this.props.item.priority}>
-                <div id='list-item' style={viewStyle} onDoubleClick={this.handleEditing}>
+                <div id='list-item' style={viewStyle}>
                     <li className='well' key={this.props.item.id} value={this.props.item.priority}></li>
                     <p style={this.state.checked ? completedStyle : null}>{this.state.changedItem}</p>
                     <small>§:</small>
@@ -82,7 +72,6 @@ class ListItem extends React.Component {
                 <div id='list-edit' style={editStyle}>
                     <p>Edit:</p>
                     <input type='text'
-                        onKeyDown={this.handleEditingDone}
                         value={this.state.changedItem}
                         onChange={this.changeEditHandler}
                     />
