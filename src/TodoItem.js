@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ListItem from './ListItem';
 
@@ -11,7 +10,7 @@ class TodoItem extends React.Component {
       <ListItem
         key={item.id}
         item={item}
-        deleteTask={this.props.deleteTask}
+        deleteItem={this.props.deleteItem}
 
       />);
     

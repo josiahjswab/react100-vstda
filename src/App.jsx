@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import AddTodoItem from "./AddTodoItem";
 import TodoItem from "./TodoItem";
-import ListItem from './ListItem';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class App extends Component {
       toDoArray: []
     };
     this.addTodo = this.addTodo.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
+    this.deleteItem = this.deleteItem.bind(this);
   }
 
   addTodo(itemObject){
@@ -20,23 +19,22 @@ class App extends Component {
     return toDoArray;
   }
 
-  deleteTask(id) {
-    let deleteThis = this.state.toDoArray.filter(item => item.id!==id)
+  deleteItem(id) {
+    let deleteDis = this.state.toDoArray.filter(item => item.id!==id)
     this.setState({
-      toDoArray: deleteThis
+      toDoArray: deleteDis
     });
   }
 
   render() {
     
-
     return (
       <div id='container'>
         <div className='row'>
           <AddTodoItem addTodo={this.addTodo}/>
           <TodoItem 
           toDoArray={this.state.toDoArray}
-          deleteTask={this.deleteTask}
+          deleteItem={this.deleteItem}
           />
         </div>
       </div>
