@@ -40,7 +40,7 @@ class AddTodoItem extends React.Component{
               name='item'
               type='text' 
               rows='3' 
-              placeholder='txt here'
+              placeholder='//Write your todo here!'
               value={this.state.item}
               onChange={this.changeHandler}
             />
@@ -48,18 +48,18 @@ class AddTodoItem extends React.Component{
           <div>
             <label>Level of priority:</label>
             <select 
-              className='select-priority' 
+              className='create-todo-priority' 
               name='priority' 
               onChange={this.changeHandler}
             >
-              <option className='select-priority' value='1'>Low</option>
-              <option className='select-priority' value='2'>Medium</option>
-              <option className='select-priority' value='3'>High</option>
+              <option className='create-todo-priority' value='1'>Low</option>
+              <option className='create-todo-priority' value='2'>Medium</option>
+              <option className='create-todo-priority' value='3'>High</option>
             </select>
           </div>
           <div>
             <button 
-              className='btn btn-primary' 
+              className='create-todo' 
               onClick={this.clickHandler}
             >Add</button>
           </div>

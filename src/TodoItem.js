@@ -17,7 +17,7 @@ class TodoItem extends React.Component {
     return(
       
       <div className='col-8 card'>
-        <div className='card-header'>To do list:</div>
+        <div className='card-header'>Todo list:</div>
         <div id='root' className='card-body'>
           <ul className='unordered-list'>
           {display}

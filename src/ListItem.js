@@ -6,7 +6,8 @@ class ListItem extends React.Component {
         this.state = {
             checked: false,
             editing: false,
-            changedItem: ''
+            changedItem: '',
+            priority: 1
         }; 
         this.changeHandler = this.changeHandler.bind(this);
         this.changeEditHandler = this.changeEditHandler.bind(this);
@@ -39,7 +40,10 @@ class ListItem extends React.Component {
     }
 
     componentDidMount () {
-        this.setState({changedItem: this.props.item.item});
+        this.setState({
+            changedItem: this.props.item.item,
+            priority: this.props.item. priority
+        });
     }
 
     render() {
@@ -60,9 +64,9 @@ class ListItem extends React.Component {
             textDecoration: "line-through"
         };     
         return(
-            <div className='list-item' value={this.props.item.priority}>
+            <div className='todo-item' value={this.state.priority}>
                 <div id='list-item' style={viewStyle}>
-                    <li className='well' key={this.props.item.id} value={this.props.item.priority}></li>
+                    <li className='well' key={this.props.item.id}></li>
                     <p style={this.state.checked ? completedStyle : null}>{this.state.changedItem}</p>
                     <small>§:</small>
                     <input type='checkbox' checked={this.state.checked} onClick={this.clickHandler}></input>
@@ -75,6 +79,15 @@ class ListItem extends React.Component {
                         value={this.state.changedItem}
                         onChange={this.changeEditHandler}
                     />
+                    <select 
+                        className='select-priority' 
+                        name='priority' 
+                        onChange={this.changeHandler}
+                    >
+                        <option className='select-priority' value='1'>Low</option>
+                        <option className='select-priority' value='2'>Medium</option>
+                        <option className='select-priority' value='3'>High</option>
+                    </select>
                     <button className="btn-edit" onClick={this.handleEditingDoneButton}><i className="far fa-check-circle"></i></button>
                 </div>
             </div>
