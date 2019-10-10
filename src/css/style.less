@@ -46,18 +46,49 @@ div.pull-right a {
 #container {
  padding: 50px;
 }
-.unordered-list li {
-  padding: 15px;
+.card-body {
+  padding: 0px;
+  margin: 0px;
+}
+ul {
+ padding: 10px;
+ margin: 0px;
+}
+.list-item {
   margin: 5px;
+  padding: 15px;
+  width: 100%;
   list-style-type: none;
   border-radius: 10px;
 }
-.unordered-list li[value='1'] {
+.list-item[value='1'] {
   background-color: rgba(115, 255, 0, 0.637) !important;
 }
-.unordered-list li[value='2'] {
+.list-item[value='2'] {
   background-color: rgba(251, 255, 0, 0.603);
 }
-.unordered-list li[value='3'] {
+.list-item[value='3'] {
   background-color: rgba(245, 0, 0, 0.472);
+}
+#list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#list-item p {
+  width: 70%;
+  margin: 0px;
+}
+#list-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#list-edit p {
+  margin: 0px;
+}
+#list-edit input {
+  width:70%;
 }

@@ -7,7 +7,7 @@ class EditTodo extends React.Component {
             item: this.props.item.item,
             priority: this.props.item.priority,
 
-        }
+        };
         this.changeHandler = this.changeHandler.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
     }
@@ -29,7 +29,7 @@ class EditTodo extends React.Component {
 
     render() {
         return (
-        <div>    
+        <div id='edit-todo'>    
             <div>
               <label>Add an item:</label>
               <textarea
