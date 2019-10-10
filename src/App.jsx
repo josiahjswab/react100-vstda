@@ -10,7 +10,9 @@ class App extends Component {
       toDoArray: []
     };
     this.addTodo = this.addTodo.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
+
   addTodo(itemObject){
     let toDoArray = this.state.toDoArray;
     toDoArray.push(itemObject);
@@ -18,16 +20,23 @@ class App extends Component {
     return toDoArray;
   }
 
+  deleteTask(id) {
+    let deleteThis = this.state.toDoArray.filter(item => item.id!==id)
+    this.setState({
+      toDoArray: deleteThis
+    });
+  }
+
   render() {
     
-    const listGenerator = this.state.toDoArray.map(item => <ListItem key={item.id} item={item}/>);
 
     return (
       <div id='container'>
         <div className='row'>
           <AddTodoItem addTodo={this.addTodo}/>
           <TodoItem 
-          listItem={listGenerator}
+          toDoArray={this.state.toDoArray}
+          deleteTask={this.deleteTask}
           />
         </div>
       </div>

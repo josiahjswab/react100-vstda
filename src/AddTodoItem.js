@@ -7,7 +7,7 @@ class AddTodoItem extends React.Component{
     this.state= {
       item:'',
       priority:'1',
-      key: 0
+      id: 0
     };
     this.changeHandler = this.changeHandler.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
@@ -22,7 +22,7 @@ class AddTodoItem extends React.Component{
     this.setState({
       item: this.state.item,
       priority: this.state.priority,
-      key: Math.random() + 1
+      id: Math.random() + 1
     });
     
     this.props.addTodo(this.state);

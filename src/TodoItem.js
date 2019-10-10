@@ -1,20 +1,27 @@
 
 import React from 'react';
+import ListItem from './ListItem';
 
 class TodoItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
   }
   render() {
+    var display = this.props.toDoArray.map(item =>
+      <ListItem
+        key={item.id}
+        item={item}
+        deleteTask={this.props.deleteTask}
 
+      />);
+    
     return(
       
       <div className='col-8 card'>
         <div className='card-header'>To do list:</div>
         <div id='root' className='card-body'>
           <ul className='unordered-list'>
-          {this.props.listItem}
+          {display}
           </ul>
         </div>
       </div>
@@ -24,3 +31,4 @@ class TodoItem extends React.Component {
 
 export default TodoItem;
 
+// const listGenerator = this.state.toDoArray.map(item => <ListItem key={item.id} item={item}/>);
