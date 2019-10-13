@@ -7,13 +7,14 @@ class ListItem extends React.Component {
             checked: false,
             editing: false,
             changedItem: '',
-            priority: 1
+            priority: 1,
         }; 
         this.changeHandler = this.changeHandler.bind(this);
         this.changeEditHandler = this.changeEditHandler.bind(this);
         this.clickHandler = this.clickHandler.bind(this);
         this.handleEditing = this.handleEditing.bind(this);
         this.handleEditingDoneButton = this.handleEditingDoneButton.bind(this);
+        this.handleEditingDoneEnter = this.handleEditingDoneEnter.bind(this);
     }
 
     changeHandler(event) {
@@ -23,7 +24,7 @@ class ListItem extends React.Component {
     clickHandler() {
         this.setState(prevState => ({
             checked: !prevState.checked
-        }));        
+        }));
     }
 
     changeEditHandler(event) {
@@ -37,6 +38,12 @@ class ListItem extends React.Component {
 
     handleEditingDoneButton () {
         this.setState({ editing: false });
+    }
+
+    handleEditingDoneEnter (event) {
+        if (event.keyCode === 13) {
+            this.setState({editing: false});
+        }
     }
 
     componentDidMount () {
@@ -64,7 +71,7 @@ class ListItem extends React.Component {
             textDecoration: "line-through"
         };     
         return(
-            <div className='todo-item' value={this.state.priority}>
+            <div className='todo-item' value={this.state.priority} style={this.props.priority1}>
                 <div id='list-item' style={viewStyle}>
                     <li className='well' key={this.props.item.id}></li>
                     <p style={this.state.checked ? completedStyle : null}>{this.state.changedItem}</p>
@@ -78,6 +85,7 @@ class ListItem extends React.Component {
                     <input type='text'
                         value={this.state.changedItem}
                         onChange={this.changeEditHandler}
+                        onKeyDown={this.handleEditingDoneEnter}
                     />
                     <select 
                         className='select-priority' 
@@ -93,7 +101,6 @@ class ListItem extends React.Component {
             </div>
         )        
     }
-
 }
 
 export default ListItem;

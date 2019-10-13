@@ -27,7 +27,6 @@ class AddTodoItem extends React.Component{
     this.props.addTodo(this.state);
   }
 
-
   render() {
     return(
       <div className='col-4 card'>
@@ -68,6 +67,5 @@ class AddTodoItem extends React.Component{
     );
   }
 }
-
  
 export default AddTodoItem;

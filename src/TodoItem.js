@@ -5,19 +5,20 @@ class TodoItem extends React.Component {
   constructor(props) {
     super(props);
   }
-  render() {
-    var display = this.props.toDoArray.map(item =>
-      <ListItem
-        key={item.id}
-        item={item}
-        deleteItem={this.props.deleteItem}
 
-      />);
-    
-    return(
-      
+  render() {
+
+    var display = this.props.toDoArray.map(item =>
+    <ListItem
+      key={item.id}
+      item={item}
+      deleteItem={this.props.deleteItem}
+    />);
+
+      return (
       <div className='col-8 card'>
-        <div className='card-header'>Todo list:</div>
+        <div className='card-header'>Todo list:
+        </div>
         <div id='root' className='card-body'>
           <ul className='unordered-list'>
           {display}
@@ -29,5 +30,3 @@ class TodoItem extends React.Component {
 }
 
 export default TodoItem;
-
-// const listGenerator = this.state.toDoArray.map(item => <ListItem key={item.id} item={item}/>);
