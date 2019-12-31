@@ -12,18 +12,45 @@ class App extends Component {
     this.deleteItem = this.deleteItem.bind(this);
   }
 
+  componentDidMount() {
+    fetch('/api/TodoItems')
+    .then((res) => {
+      res.json()
+      .then(json => this.setState({ toDoArray: json }));
+    });
+  }
+
+  update() {
+    fetch('/api/TodoItems')
+    .then((res) => {
+      res.json()
+      .then(json => this.setState({ toDoArray: json }));
+    });
+  }
+
   addTodo(itemObject) {
-    const toDoArray = this.state.toDoArray;
-    toDoArray.push(itemObject);
-    this.setState({ toDoArray });
-    return toDoArray;
+    fetch('/api/TodoItems', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(itemObject) })
+    .then(() => this.update())
+    .catch(err => console.log(err));
   }
 
   deleteItem(id) {
-    const deleteDis = this.state.toDoArray.filter(item => item.id !== id);
-    this.setState({
-      toDoArray: deleteDis
-    });
+    // ! commented out code is legacy prior to attaching the the api.
+    // const deleteDis = this.state.toDoArray.filter(item => item.id !== id);
+    // this.setState({
+    //   toDoArray: deleteDis
+    // });
+
+    fetch(`/api/TodoItems/${id}`, {
+      method: 'DELETE' })
+    .then(() => this.update())
+    .catch(err => console.log(err));
+    // TODO: id param is returning 400 except for hardcoded values.
   }
 
   render() {
