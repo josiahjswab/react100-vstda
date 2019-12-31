@@ -49,7 +49,7 @@ class ListItem extends React.Component {
     componentDidMount () {
         this.setState({
             changedItem: this.props.item.item,
-            priority: this.props.item. priority
+            priority: this.props.item.priority
         });
     }
 
