@@ -42,9 +42,6 @@ app.post('/api/TodoItems', (req, res) => {
 });
 
 app.delete('/api/TodoItems/:id', (req, res) => {
-  console.log(req.params.id);
-  // console.log(fakeTodos);
-  console.log(fakeTodos[req.params.id]);
   if (fakeTodos[req.params.id]) {
     const newFakeTodos = fakeTodos.filter(todo => todo.id !== Number(req.params.id));
     fakeTodos = newFakeTodos;
